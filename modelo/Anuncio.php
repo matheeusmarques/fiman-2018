@@ -5,6 +5,7 @@ class Anuncio{
   private $id;
   private $preco;
   private $quantidade;
+  private $plantacao_id;
   private $data;
 
   public function __get($name){

@@ -5,6 +5,7 @@ class Usuario{
   private $id;
   private $login;
   private $senha;
+  private $tipo;
   private $email;
   private $pessoa_id;
 
@@ -17,5 +18,4 @@ class Usuario{
   }
 
 }
-
 ?>

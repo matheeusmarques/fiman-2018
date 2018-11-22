@@ -4,7 +4,7 @@ class Cidade{
 
   private $id;
   private $nome;
-  private $id_estado;
+  private $estado_id;
 
   public function __get($name){
     return $this->$name;
