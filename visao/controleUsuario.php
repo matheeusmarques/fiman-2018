@@ -18,7 +18,7 @@ if(!empty($_GET['action'])){
       $usuario->email = $_POST['email'];
       $usuario->tipo = $_POST['tipo'];
       $usuario->pessoa_id = $_POST['pessoa_id'];
-      var_dump($usuario);
+      // var_dump($usuario);
 
       // $daoUsuario->queryInsert($usuario) !== FALSE)
         // header('Location: http://localhost/admin/usuario.php?status=add');

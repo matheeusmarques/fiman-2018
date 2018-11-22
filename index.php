@@ -1,6 +1,7 @@
 <?php
 require_once "DAO/DAOUsuario.php";
 require_once "DAO/DAOPessoa.php";
+require_once "modelo/Pessoa.php";
 
 // require_once 'DAO/DAOView.php';
 // require_once 'modelo/View.php';
@@ -11,6 +12,9 @@ include "header.php";
 $daoUsuario = new DAOUsuario();
 $daoPessoa = new DAOPessoa();
 
+$pessoa = new Pessoa();
+$pessoa->id = $_SESSION['p_id'];
+$pessoa = $daoPessoa->querySelectPessoa($pessoa);
 // $view = new View();
 // $daoView = new DAOView();
 
@@ -54,41 +58,48 @@ $daoPessoa = new DAOPessoa();
   <div class="col-md-12">
     <div class="x_panel">
       <div class="x_content">
-        <?php  ?>
+        <?php  if($pessoa['cidade_id'] == NULL || $pessoa['cadastro_nacional'] == 0 || $pessoa['cadastro_nacional'] == '')
+                echo '<center><div class="alert alert-danger alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                  </button>
+                  <strong>Você possui informações pendentes para adicionar no seu perfil. Vá até o menu perfil e adicione-as!</strong>
+                  </div></center>';
+
+        ?>
    <div class="row">
       <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
          <div class="tile-stats">
-            <h3>Ontem</h3>
-            <p>&nbsp;</p>
+            <h3></h3>
+            <p></p>
          </div>
       </div>
       <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
          <div class="tile-stats">
-            <h3>Hoje</h3>
-            <p>Até o momento</p>
+            <h3></h3>
+            <p></p>
          </div>
       </div>
       <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
          <div class="tile-stats">
-            <h3>Este mês</h3>
-            <p>valor acumulado este mês</p>
+            <h3></h3>
+            <p></p>
          </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
            <div class="tile-stats">
-              <h3>Este ano</h3>
-              <p>valor acumulado no ano</p>
+              <h3></h3>
+              <p></p>
            </div>
         </div>
    </div>
    <div class="row">
      <div class="x_panel">
    <div class="x_title">
-      <h2>Seu link de indicação</h2>
+      <h2>Convide outros usuários para nosso sistema</h2>
       <div class="clearfix"></div>
    </div>
    <div class="x_content">
-      <p> <input class="form-control" onclick="copiarClipboard('link_indicacao')" readonly="readonly" type="text" value="http://bl.network/?ind=15#cadastro" id="link_indicacao"> <br> Divulgue a nossa plataforma para seus amigos. </p>
+      <p> <input class="form-control" onclick="copiarClipboard('link_indicacao')" readonly="readonly" type="text" value="http://mandiokinha.net/?ind=15#cadastro" id="link_indicacao"> <br> Divulgue a nossa plataforma para seus amigos. </p>
    </div>
 </div>
    </div>

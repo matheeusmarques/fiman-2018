@@ -7,16 +7,10 @@ include "inc/modal_pessoa.php";
 require_once "DAO/mySQL.class.php";
 
 require_once "modelo/Pessoa.php";
-require_once "modelo/Cidade.php";
-require_once "modelo/View.php";
-
 require_once "DAO/DAOPessoa.php";
-require_once "DAO/DAOCidade.php";
-require_once "DAO/DAOView.php";
-
-
 require_once "DAO/DAOUsuario.php";
 require_once "modelo/Usuario.php";
+
 
 // dao & lista
 $daoUsuario = new DAOUsuario();
@@ -34,11 +28,6 @@ $pessoa = $daoPessoa->querySelectPessoa($pessoa);
 $cidade = new Cidade();
 $daoCidade = new DAOCidade();
 $listaCidades = $daoCidade->selectAll();
-
-$view = new View();
-$daoView = new DAOView();
-
-$view->user_id = $_SESSION['id'];
 
  // var_dump($pessoa);
 ?>
@@ -115,12 +104,9 @@ $view->user_id = $_SESSION['id'];
         data-toggle="modal"
         data-id="<?php echo $pessoa['id'];?>"
         data-nome="<?php echo $pessoa['nome'];?>"
-        data-sexo="<?php echo $pessoa['sexo'];?>"
-        data-nascimento="<?php echo $pessoa['data_nascimento'];?>"
+        data-tipo="<?php echo $pessoa['tipo'];?>"
+        data-cadastro_nacional="<?php echo $pessoa['cadastro_nacional'];?>"
         data-cidade_id="<?php echo $pessoa['cidade_id'];?>"
-        data-cpf="<?php echo $pessoa['cpf'];?>"
-        data-rg="<?php echo $pessoa['rg'];?>"
-        data-status="<?php echo $pessoa['status'];?>"
         class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Editar Perfil</a>
         <br />
 
@@ -137,16 +123,16 @@ $view->user_id = $_SESSION['id'];
           <div id="myTabContent" class="tab-content">
             <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
          <div class="tile-stats">
-            <div class="count">R$ <?php echo $currentuser['saldo']; ?></div>
-            <h3>Atual</h3>
-            <p>Saldo do Momento</p>
+            <div class="count"></div>
+            <h3>Teste</h3>
+            <p>Teste</p>
          </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-4 col-sm-6 col-xs-12">
      <div class="tile-stats">
-        <div class="count">R$ <?php echo $daoView->queryCountTotalAmount($view); ?></div>
-        <h3>Total</h3>
-        <p>Dinheiro ganho</p>
+        <div class="count"></div>
+        <h3>Teste</h3>
+        <p>Teste</p>
      </div>
     </div>
           </div>

@@ -1,9 +1,9 @@
-$('#dialog-new-ticket').on('show.bs.modal', function (event) {
+$('#dialog-new-plantacao').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var id = button.data('userid');
   var modal = $(this);
 
-  modal.find('#userid').attr('value', id);
+  modal.find('#usuario_id').attr('value', id);
   // modal.find('').attr('', );
   // modal.find('').attr('', );
   // modal.find('').text('');
@@ -22,19 +22,48 @@ $('#dialog-new-categoria').on('show.bs.modal', function (event) {
   // modal.find('').text('');
 })
 
-$('#dialog-edit-categoria').on('show.bs.modal', function (event) {
+$('#dialog-edit-plantacao').on('show.bs.modal', function (event) {
 
 var button = $(event.relatedTarget);
 var id = button.data('id');
-var name = button.data('name');
-var description = button.data('description');
-var status = button.data('status');
+var nome = button.data('nome');
+var descricao = button.data('descricao');
+var quantidade = button.data('quantidade');
+var area_total = button.data('area_total');
+var usuario_id = button.data('usuario_id');
+var tipo_mandioca = button.data('tipo_mandioca');
 
 var modal = $(this);
-modal.find('#name').attr('value', name);
+
+modal.find('#nome').attr('value', nome);
 modal.find('#id').attr('value', id);
-modal.find('#description').text(description);
-modal.find('[value="'+status+'"]').attr('selected', true);
+// modal.find('#descricao').attr('value', descricao);
+modal.find('#area_total').attr('value', area_total);
+modal.find('#usuario_id').attr('value', usuario_id);
+modal.find('[value="'+tipo_mandioca+'"]').attr('selected', true);
+
+// modal.find('#id').attr('value', id);
+// modal.find('#id').attr('value', id);
+// modal.find('#descricao').text(descricao);
+// modal.find('#area_total').text(area_total);
+modal.find('#descricao').text(descricao);
+// modal.find('[value="'+status+'"]').attr('selected', true);
+})
+
+$('#dialog-edit-anuncio').on('show.bs.modal', function (event) {
+
+var button = $(event.relatedTarget);
+var id = button.data('id');
+var preco = button.data('preco');
+var quantidade = button.data('quantidade');
+var plantacao_id = button.data('plantacao_id');
+
+var modal = $(this);
+
+modal.find('#id').attr('value', id);
+modal.find('#preco').attr('value', preco);
+modal.find('#quantidade').attr('value', quantidade);
+modal.find('[value="'+plantacao_id+'"]').attr('selected', true);
 })
 
 $('#dialog-edit-bank').on('show.bs.modal', function (event) {
@@ -77,6 +106,17 @@ $('#dialog-delete-bank').on('show.bs.modal', function (event) {
   modal.find('#titlemodel').text('Confirmar exclusão');
   modal.find('#modeltext').text('Deseja realmente excluir o banco ' + name + '?');
   modal.find('#confirm').attr('href', 'http://localhost/admin/visao/controleBanco.php?action=delete&id='+id);
+})
+
+$('#dialog-delete-anuncio').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget);
+  var id = button.data('id');
+
+  var modal = $(this);
+  modal.find('#titlemodel').text('Confirmar exclusão');
+  modal.find('#modeltext').text('Deseja realmente excluir o banco ' + name + '?');
+  modal.find('#confirm').attr('href', 'http://localhost/admin/visao/controleAnuncio.php?action=delete&id='+id);
 })
 
 $('#dialog-see-ticket').on('show.bs.modal', function (event) {
@@ -173,31 +213,20 @@ $('#dialog-edit-pessoa').on('show.bs.modal', function (event) {
 var button = $(event.relatedTarget);
 var id = button.data('id');
 var nome = button.data('nome');
-var sexo = button.data('sexo');
-var dnascimento = button.data('nascimento');
+var cadastro_nacional = button.data('cadastro_nacional');
+var tipo = button.data('tipo');
 var cidade_id = button.data('cidade_id');
-var cpf = button.data('cpf');
-var rg = button.data('rg');
-var status = button.data('status');
 
 var modal = $(this);
 modal.find('#nome').attr('value', nome);
-modal.find('#cpf').attr('value', cpf);
-modal.find('#rg').attr('value', rg);
-modal.find('#data_nascimento').attr('value', dnascimento);
 modal.find('#id').attr('value', id);
+modal.find('#cadastro_nacional').attr('value', cadastro_nacional);
 modal.find('[value="'+cidade_id+'"]').attr('selected', true);
 
-if (sexo == "F") {
-  modal.find('[value="F"]').attr('selected', true);
-}else{
-  modal.find('[value="M"]').attr('selected', true);
-}
-
-if (status == "1"){
-  modal.find('[value="1"]').attr('selected', true);
-}else{
+if (tipo == "0") {
   modal.find('[value="0"]').attr('selected', true);
+}else{
+  modal.find('[value="1"]').attr('selected', true);
 }
 })
 
@@ -211,6 +240,18 @@ var modal = $(this);
 modal.find('#titlemodel').text('Confirmar exclusão');
 modal.find('#modeltext').text('Deseja realmente excluir ' + nome + '?');
 modal.find('#confirm').attr('href', 'http://localhost/admin/visao/controleEstado.php?action=delete&id='+id);
+})
+
+$('#dialog-delete-plantacao').on('show.bs.modal', function (event) {
+
+var button = $(event.relatedTarget);
+var id = button.data('id');
+var nome = button.data('nome');
+
+var modal = $(this);
+modal.find('#titlemodel').text('Confirmar exclusão');
+modal.find('#modeltext').text('Deseja realmente excluir ' + nome + '?');
+modal.find('#confirm').attr('href', 'http://localhost/admin/visao/controlePlantacao.php?action=delete&id='+id);
 })
 
 

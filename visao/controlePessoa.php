@@ -11,7 +11,7 @@ if(!empty($_GET['action'])){
 
   switch ($_GET['action']) {
     case 'insert':
-    if( isset($_POST['nome'])) ){
+    if(isset($_POST['nome'])){
       $pessoa->nome = $_POST['nome'];
       $pessoa->tipo = $_POST['tipo'];
       $pessoa->cidade_id = $_POST['cidade_id'];
@@ -42,11 +42,12 @@ if(!empty($_GET['action'])){
       $pessoa->cidade_id = $_POST['cidade_id'];
       $pessoa->id = $_POST['id'];
       $pessoa->cadastro_nacional = $_POST['cadastro_nacional'];
-
+      // $daoPessoa->queryUpdate($pessoa);
+      // var_dump($pessoa);
       if($daoPessoa->queryUpdate($pessoa) !== FALSE)
-        header('Location: http://localhost/admin/pessoa.php?status=updated');
+        header('Location: http://localhost/admin/perfil.php?status=updated');
       else
-        header('Location: http://localhost/admin/pessoa.php?status=error');
+        header('Location: http://localhost/admin/perfil.php?status=error');
     }
     break;
 

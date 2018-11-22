@@ -127,7 +127,6 @@ class DAOPessoa{
         $pessoa->cidade_id = $row['cidade_id'];
         $pessoa->cadastro_nacional = $row['cadastro_nacional'];
         $pessoa->tipo = $row['tipo'];
-        $pessoa->status = $row['status'];
 
         return $pessoa;
       }

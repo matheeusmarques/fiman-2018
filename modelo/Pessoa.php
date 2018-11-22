@@ -4,7 +4,6 @@ class Pessoa{
 
   private $id;
   private $nome;
-  private $status;
   private $tipo; ## CNPJ or CPF
   private $cadastro_nacional; ## NUMERO DO CPF OU CNPJ
   private $cidade_id;

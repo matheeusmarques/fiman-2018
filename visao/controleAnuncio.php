@@ -40,10 +40,11 @@ if(!empty($_GET['action']) ){
       $anuncio->quantidade = $_POST['quantidade'];
       $anuncio->preco = $_POST['preco'];
 
+      // var_dump($_POST);
       if($daoAnuncio->queryUpdate($anuncio))
-        header('Location: http://localhost/admin/plantacao.php?status=removed');
+        header('Location: http://localhost/admin/anuncio.php?status=removed');
       else
-        header('Location: http://localhost/admin/plantacao.php?status=error');
+        header('Location: http://localhost/admin/anuncio.php?status=error');
     }
     break;
   }

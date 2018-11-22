@@ -5,6 +5,7 @@ class Plantacao{
   private $id;
   private $tipo_mandioca;
   private $quantidade;
+  private $nome;
   private $descricao;
   private $usuario_id;
   private $area_total;

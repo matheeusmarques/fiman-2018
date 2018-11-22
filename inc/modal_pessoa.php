@@ -10,7 +10,7 @@ require_once "DAO/mySQL.class.php";
 
 $daoPessoa = new DAOPessoa();
 $pessoa = new Pessoa();
-$listaPessoas = $daoPessoa->selectAll();
+$listaPessoas = $daoPessoa->querySelectAll();
 
 $cidade = new Cidade();
 $daoCidade = new DAOCidade();
@@ -43,26 +43,21 @@ $listaCidades = $daoCidade->selectAll();
     <div class="modal-content">
       <div class="modal-body">
         <form action="visao/controlePessoa.php?action=update" method="POST" id="demo-form" data-parsley-validate>
-          <label for="nome">Nome:</label>
+          <label for="nome">Nome/Razão Social:</label>
           <input type="text" id="nome" class="form-control" name="nome" value=""required />
           <input type="hidden" type="text" id="id" class="form-control" name="id" data-parsley-trigger="change" value="" required />
           <br>
-          <label for="rg">RG: </label>
-          <input type="text" id="rg" class="form-control" name="rg" value="" required />
-          <br>
-          <label for="cpf">CPF:</label>
-          <input type="text" data-mask="000.000.000-00" id="cpf" class="form-control" name="cpf" required />
-          <br>
-
-          <label for="datanascimento">Data de Nascimento:</label>
-          <input type="text" data-mask="00/00/0000" id="data_nascimento" class="form-control" name="data_nascimento" required />
-
-
-          <label for="heard">Sexo: </label>
-          <select id="sexo" name="sexo" class="form-control" required=>
-            <option id="#masculino" value="M">Masculino</option>
-            <option id="#feminino" value="F">Feminino</option>
+          <label for="tipo">Tipo de Registro: </label>
+          <select id="tipo" name="tipo" class="form-control" required=>
+            <option id="0" value="0">CNPJ</option>
+            <option id="1" value="1">CPF</option>
           </select>
+          <br>
+          <label for="cadastro_nacional">Registro</label>
+          <input type="text" id="cadastro_nacional" class="form-control" name="cadastro_nacional" value=""required />
+          <br>
+
+
 
           <label for="heard">Cidade:</label>
           <select name="cidade_id" id="cidade_id" class="form-control" required>
@@ -71,13 +66,6 @@ $listaCidades = $daoCidade->selectAll();
                 echo '<option value="'.$cidade->id.'">
                 '.$cidade->nome.'</option>';
               }
-            ?>
-          </select>
-
-          <label for="heard">Status: </label>
-          <select id="status" name="status" class="form-control" required=>
-            <option value="1">Ativado</option>
-            <option value="0">Desativado</option>
             ?>
           </select>
       </div>

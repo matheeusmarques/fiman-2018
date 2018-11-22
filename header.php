@@ -117,18 +117,11 @@ if(empty($_SESSION['login']) && empty($_SESION['senha'])){
             <li><a href="pessoa.php">Pessoas</a></li>
             <li><a href="usuario.php">Usuários</a></li>
             </ul>
-            </li>'
-            <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
-              <ul class="nav child_menu">
-                <li><a href="banco.php">Meus Bancos</a></li>
-                <li><a href="pagamento.php">Todos Pagamentos</a></li>
-                <li><a href="pagamento_view.php">Visualizar Pagamento</a></li>
-              </ul>
             </li>
-            <li><a><i class="fa fa-newspaper-o"></i> Plantações <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-money"></i> Mercado <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="plantacao.php">Minhas Plantações</a></li>
-                <li><a href="links.php">Meus Links</a></li>
+                <li><a href="anuncio.php">Meus Anúncios</a></li>
                 <?php
                 if($_SESSION['tipo'] == "admin")
                 echo '<li><a href="categoria.php">Categorias</a></li>'; ?>

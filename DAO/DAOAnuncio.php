@@ -33,7 +33,7 @@ class DAOAnuncio{
         }
       }
 
-      public function selectAll(){
+      public function querySelectAll(){
         try {
           $sql = "SELECT * FROM anuncio ORDER BY data";
           $result = $this->pdo->query($sql);
@@ -65,9 +65,9 @@ class DAOAnuncio{
         }
       }
 
-      public function querySelectAllFromUser(Anuncio $anuncio){
+      public function querySelectAllFromUser(Usuario $usuario){
         try {
-          $sql = "SELECT * FROM anuncio WHERE user_id = :id ORDER BY data";
+          $sql = "SELECT anuncio.data, anuncio.quantidade, anuncio.preco, plantacao.nome FROM anuncio INNER JOIN plantacao ON anuncio.plantacao_id = plantacao.id ON WHERE user_id = :id ORDER BY data";
           $t_sql = $this->prepare($sql);
           $t_sql->bindValue(":id", $anuncio->plantacao_id);
           $t_sql -> execute();
@@ -84,35 +84,34 @@ class DAOAnuncio{
           echo "Error: ".$e;
         }
       }
+
+      public function queryUpdate(Anuncio $anuncio){
+          try {
+            $sql = "UPDATE anuncio SET "
+              . "preco = :preco,"
+              . "quantidade = :quantidade,"
+              . "data = now() "
+              . "WHERE id = :id";
+              $t_sql = $this->pdo->prepare($sql);
+              $t_sql -> bindValue(":preco", $anuncio->preco);
+              $t_sql -> bindValue(":quantidade", $anuncio->quantidade);
+              $t_sql -> bindValue(":id", $anuncio->id);
+              return $t_sql->execute();
+          } catch (PDOException $e) {
+            echo "Error: ".$e;
+          }
+        }
       //
-      //   public function queryUpdate(Noticia $noticia){
-      //     try {
-      //       $sql = "UPDATE categoria SET "
-      //         . "name = :name,"
-      //         . "description = :description,"
-      //         . "status = :status "
-      //         . "WHERE id = :id";
-      //         $t_sql = $this->pdo->prepare($sql);
-      //         $t_sql -> bindValue(":name", $categoria->getName());
-      //         $t_sql -> bindValue(":description", $categoria->description);
-      //         $t_sql -> bindValue(":status", $categoria->getStatus());
-      //         $t_sql -> bindValue(":id", $categoria->getId());
-      //         return $t_sql->execute();
-      //     } catch (PDOException $e) {
-      //       echo "Error: ".$e;
-      //     }
-      //   }
-      //
-      //   public function queryDelete(Noticia $noticia){
-      //     try {
-      //       $sql = "DELETE FROM noticia WHERE id = :id";
-      //       $t_sql = $this->pdo->prepare($sql);
-      //       $t_sql -> bindValue(":id", $categoria->getId());
-      //       return $t_sql->execute();
-      //     } catch (PDOException $e) {
-      //       echo "Error: ".$e;
-      //     }
-      // }
+        public function queryDelete(Anuncio $anuncio){
+          try {
+            $sql = "DELETE FROM anuncio WHERE id = :id";
+            $t_sql = $this->pdo->prepare($sql);
+            $t_sql -> bindValue(":id", $anuncio->id);
+            return $t_sql->execute();
+          } catch (PDOException $e) {
+            echo "Error: ".$e;
+          }
+      }
       //
       public function fillArray($row){
 
